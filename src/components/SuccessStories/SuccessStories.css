@@ -1,0 +1,219 @@
+/* Asosiy bo'lim */
+.success-stories {
+  padding: 70px 0;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.success-stories__top {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+.success-stories__eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #64748b;
+  border-radius: 50%;
+}
+
+.section-heading {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+}
+
+.section-sub {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Kartochkalar grid tizimi */
+.success-stories__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* Minimalist va o'qishga qulay Card Dizayni */
+.success-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.success-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Karta boshi (Avatar + Ism + Sana) */
+.success-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Rasmni aniq 250px ga 250px (proporsional doira yoki kvadrat shaklda) qilish */
+.success-card__avatar-wrap {
+  width: 250px;
+  height: 250px;
+  min-width: 250px;
+  border-radius: 12px; /* Agar dumaloq qilishni xohlasangiz 50% qilasiz, kartochka uchun 12px chiroyli chiqadi */
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid #e2e8f0;
+  margin: 0 auto 15px auto; /* Markazga qo'yish uchun */
+}
+
+.success-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.success-card__avatar-fallback {
+  width: 100%;
+  height: 100%;
+  background: #e2e8f0;
+  color: #475569;
+  font-weight: 600;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Agar kartaning yuqori qismida ism va rasm yonma-yon emas, 
+   ustma-ust tushishini xohlasangiz quyidagi blokni ishlating: */
+.success-card__header {
+  display: flex;
+  flex-direction: column; /* Rasmni tepaga, matnni pastga qo'yish uchun */
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.success-card__user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.success-card__info {
+  flex-grow: 1;
+}
+
+.success-card__name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.success-card__role {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.company-tag {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.success-card__date {
+  font-size: 12px;
+  color: #94a3b8;
+  background: #f8fafc;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid #f1f5f9;
+}
+
+/* Xabar qismi (Chat Bubble) */
+.success-card__body {
+  margin-bottom: 16px;
+}
+
+.chat-bubble {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.chat-bubble p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #334155;
+  margin: 0;
+}
+
+/* Karta pastki qismi */
+.success-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.verified-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0284c7;
+}
+
+.verified-badge svg {
+  color: #0284c7;
+}
+
+.chat-icon-indicator {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobil moslashuvchanlik */
+@media (max-width: 768px) {
+  .success-stories__grid {
+    grid-template-columns: 1fr;
+  }
+  .success-card__avatar-wrap {
+    width: 100%; /* Mobilda ekran kengligiga moslashadi */
+    height: 220px;
+  }
+  .section-heading {
+    font-size: 24px;
+  }
+}

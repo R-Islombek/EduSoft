@@ -1,0 +1,220 @@
+/* --- Pricing Section --- */
+.pricing {
+  position: relative;
+  padding: 100px 0;
+  background-color: #F8FAFC; /* Yorug' va toza fon */
+  color: #0F172A;
+}
+
+.pricing__header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 60px auto;
+}
+
+.pricing__eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4F46E5;
+  margin-bottom: 16px;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #4F46E5;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #4F46E5;
+}
+
+.section-heading {
+  font-size: clamp(32px, 4vw, 42px);
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: #64748B;
+  line-height: 1.6;
+}
+
+/* --- Grid Layout --- */
+.pricing__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* --- Plan Card --- */
+.plan-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.08);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+/* Maxsus (Featured) Mentorlik kartasi uchun mukammal urg'u */
+.plan-card--featured {
+  background: #ffffff;
+  border: 2px solid #4F46E5;
+  box-shadow: 0 20px 50px rgba(79, 70, 229, 0.15);
+  transform: scale(1.03);
+}
+
+.plan-card--featured:hover {
+  transform: scale(1.03) translateY(-6px);
+}
+
+.plan-card__badge {
+  position: absolute;
+  top: -14px;
+  right: 32px;
+  background-color: #4F46E5;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 30px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+  text-transform: uppercase;
+}
+
+/* Kontent qismlari */
+.plan-card__name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 12px;
+}
+
+.plan-card__desc {
+  font-size: 15px;
+  color: #64748B;
+  line-height: 1.5;
+  min-height: 48px;
+  margin-bottom: 24px;
+}
+
+.plan-card__price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.plan-card__price {
+  font-size: 32px;
+  font-weight: 900;
+  color: #0F172A;
+  letter-spacing: -1px;
+}
+
+.plan-card__period {
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748B;
+}
+
+/* Xususiyatlar ro'yxati */
+.plan-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-grow: 1;
+}
+
+.plan-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.plan-feature-item svg {
+  color: #4F46E5;
+  flex-shrink: 0;
+}
+
+/* Tugmalar */
+.plan-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.plan-btn--outline {
+  background-color: #F8FAFC;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+}
+
+.plan-btn--outline:hover {
+  background-color: rgba(79, 70, 229, 0.05);
+  border-color: #4F46E5;
+  color: #4F46E5;
+}
+
+.plan-btn--primary {
+  background-color: #4F46E5;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+}
+
+.plan-btn--primary:hover {
+  background-color: #4338CA;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+}
+
+/* --- Responsive (Planshet va Mobillar) --- */
+@media (max-width: 1024px) {
+  .pricing__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .plan-card--featured {
+    transform: none;
+  }
+  .plan-card--featured:hover {
+    transform: translateY(-6px);
+  }
+}

@@ -1,0 +1,60 @@
+.mentors { padding: 40px 0 96px; }
+
+.mentors__row { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 40px; align-items: start; }
+
+.mentors__intro { position: sticky; top: 110px; }
+
+.mentor-card {
+  background: var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  display: flex;
+  gap: 28px;
+  color: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.mentor-card__avatar {
+  flex-shrink: 0;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--violet), var(--coral));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.mentor-card__body h3 { font-size: 1.5rem; color: #fff; }
+.mentor-card__role { margin-top: 6px; color: #C9BFEF; font-weight: 600; font-size: 0.95rem; }
+.mentor-card__bio { margin-top: 16px; color: #D8D1EF; font-size: 0.98rem; line-height: 1.7; max-width: 560px; }
+
+.mentor-card__stack { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+.mentor-card__stack span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.mentor-invite {
+  grid-column: 2;
+  margin-top: -4px;
+  padding: 22px 26px;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--border);
+}
+.mentor-invite h4 { font-size: 1rem; }
+.mentor-invite p { margin-top: 6px; color: var(--ink-soft); font-size: 0.92rem; }
+
+@media (max-width: 900px) {
+  .mentors__row { grid-template-columns: 1fr; }
+  .mentors__intro { position: static; }
+  .mentor-card { flex-direction: column; }
+  .mentor-invite { grid-column: 1; }
+}

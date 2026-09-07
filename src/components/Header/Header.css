@@ -1,0 +1,259 @@
+:root {
+  --brand-color: #4F46E5;       /* Trenddagi Indigo rang */
+  --brand-hover: #4338CA;       /* Hover holati uchun to'qroq tus */
+  --brand-light: rgba(79, 70, 229, 0.08); /* Yengil fon uchun */
+  --text-main: #0F172A;         /* Asosiy matn rangi */
+  --text-muted: #64748B;        /* Yordamchi matn rangi */
+}
+
+/* --- Asosiy Header --- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E2E8F0;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-header.is-scrolled {
+  height: 75px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.site-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* --- Logotip --- */
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  z-index: 1010;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text-main);
+  letter-spacing: 0.5px;
+}
+
+.logo-sub {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--brand-color);
+  letter-spacing: 1px;
+}
+
+/* --- Navigatsiya --- */
+.site-header__nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-item-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-header__link {
+  position: relative;
+  background: none;
+  border: none;
+  color: #334155;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color 0.25s ease;
+}
+
+.site-header__link:hover {
+  color: var(--brand-color);
+}
+
+/* Faol sahifa rangi va tag chizig'i */
+.site-header__link.is-active {
+  color: var(--brand-color);
+}
+
+.site-header__link.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--brand-color);
+  border-radius: 2px;
+}
+
+/* Linklar orasidagi zamonaviy ajratuvchi (/) */
+.nav-divider {
+  color: var(--brand-color);
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0.35;
+  user-select: none;
+}
+
+/* --- CTA Tugma (Trend Indigo) --- */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1010;
+}
+
+.btn-consult {
+  background-color: var(--brand-color);
+  color: #ffffff;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-consult:hover {
+  background-color: var(--brand-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+}
+
+/* --- Burger --- */
+.site-header__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1020;
+}
+
+.site-header__burger span {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--text-main);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.site-header__burger.is-open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.site-header__burger.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.site-header__burger.is-open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* --- Mobil Overlay --- */
+.site-header__overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 990;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+  .site-header__burger {
+    display: flex;
+  }
+
+  .site-header__overlay {
+    display: block;
+    pointer-events: none;
+  }
+  .site-header__overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .site-header__nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: #ffffff;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 30px;
+    box-shadow: -10px 0 30px rgba(15, 23, 42, 0.15);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1005;
+  }
+
+  .site-header__nav.is-open {
+    right: 0;
+  }
+
+  .site-header__nav-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .nav-item-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .nav-divider {
+    display: none;
+  }
+
+  .site-header__link {
+    font-size: 18px;
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 1px solid #F1F5F9;
+  }
+}

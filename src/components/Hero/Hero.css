@@ -1,0 +1,284 @@
+/* --- Asosiy Hero Bloki --- */
+.hero {
+  position: relative;
+  padding-top: 140px;
+  background: #ffffff;
+  overflow: hidden;
+  color: #0F172A;
+}
+
+/* Orqa fondagi texnologik tarmoq effekti */
+.hero__net-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(79, 70, 229, 0.12) 1px, transparent 1px),
+    linear-gradient(to right, rgba(79, 70, 229, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(79, 70, 229, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__row {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 50px;
+  padding-bottom: 80px;
+}
+
+/* --- Matn Qismi --- */
+.hero__eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4F46E5;
+  margin-bottom: 24px;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #4F46E5;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #4F46E5;
+}
+
+.hero__title {
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  color: #0F172A;
+  margin-bottom: 20px;
+}
+
+.hero__rotating {
+  color: #4F46E5; /* Trenddagi asosiy brend rang */
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+.hero__rotating.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__desc {
+  font-size: 18px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  max-width: 540px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.btn-outline:hover {
+  border-color: #4F46E5;
+  color: #4F46E5;
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.btn-primary {
+  background-color: #4F46E5;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+  transition: all 0.25s ease;
+}
+.btn-primary:hover {
+  background-color: #4338CA;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+}
+.btn-primary svg {
+  transition: transform 0.2s ease;
+}
+.btn-primary:hover svg {
+  transform: translateX(4px);
+}
+
+/* --- ORBIT / AYLANUVCHI VIZUAL QISM --- */
+.hero__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px;
+}
+
+.orbit-container {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Markaziy doira */
+.orbit-center {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  background: #ffffff;
+  border: 2px solid rgba(79, 70, 229, 0.25);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+  z-index: 5;
+}
+
+.orbit-center__text {
+  font-weight: 900;
+  font-size: 16px;
+  color: #0F172A;
+  letter-spacing: -0.5px;
+}
+
+.orbit-center__sub {
+  font-size: 10px;
+  font-weight: 700;
+  color: #4F46E5;
+  letter-spacing: 1px;
+}
+
+/* Aylanuvchi halqa va uning elementlari */
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(79, 70, 229, 0.3);
+  border-radius: 50%;
+  animation: spinRing 20s linear infinite;
+}
+
+.orbit-ring:hover {
+  animation-play-state: paused;
+}
+
+.orbit-item {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1E293B;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  animation: counterSpin 20s linear infinite;
+}
+
+/* 5 ta elementni doira bo'ylab taqsimlash */
+.item--1 { top: -15px; left: 50%; transform: translateX(-50%); }
+.item--2 { top: 20%; right: -25px; }
+.item--3 { bottom: 15%; right: -15px; }
+.item--4 { bottom: -15px; left: 50%; transform: translateX(-50%); }
+.item--5 { top: 30%; left: -30px; }
+
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes counterSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* --- Statistika Qismi --- */
+.hero__stats {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  background: #F8FAFC;
+  padding: 30px 0;
+}
+
+.hero__stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+.stat-card span {
+  font-size: 14px;
+  color: #64748B;
+}
+
+/* --- Responsive (Mobil ekranlar) --- */
+@media (max-width: 968px) {
+  .hero {
+    padding-top: 110px;
+  }
+  .hero__row {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  .hero__desc {
+    margin: 0 auto 30px auto;
+  }
+  .hero__actions {
+    justify-content: center;
+  }
+  .orbit-container {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  .hero__stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}

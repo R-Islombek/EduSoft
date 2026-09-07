@@ -1,0 +1,152 @@
+/* --- Asosiy bo'lim stillari --- */
+.testimonials {
+  padding: 120px 0;
+  background-color: #ffffff;
+}
+
+.testimonials__top {
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.testimonials__grid {
+  display: grid;
+  /* 4 ta video borligi uchun gridni moslashuvchan qilamiz */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* --- Video Karta (Figure) --- */
+.video-review {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-review:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+/* --- Video O'ram (Frame) - Qat'iy 300x300 px --- */
+.video-review__frame {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Aniq 300px balandlik */
+  background-color: #0f172a;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.video-review__frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Videoni buzmasdan 300x300 kvadratga moslaydi */
+  display: block;
+}
+
+/* --- Play Tugmasi --- */
+.video-review__play-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.video-review__frame:hover .video-review__play-overlay {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.video-review__play-btn {
+  width: 60px;
+  height: 60px;
+  background-color: #4F46E5;
+  color: #ffffff;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.45);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  padding-left: 3px;
+}
+
+.video-review__frame:hover .video-review__play-btn {
+  transform: scale(1.1);
+  background-color: #4338CA;
+}
+
+/* --- Pastki Matn Qismi --- */
+.video-review__caption {
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  background-color: #ffffff;
+  border-top: 1px solid #F1F5F9;
+  flex-grow: 1;
+}
+
+.video-review__user-data {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.video-review__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.video-review__meta {
+  font-size: 13px;
+  color: #64748B;
+}
+
+.video-review__company {
+  color: #4F46E5;
+  font-weight: 500;
+}
+
+.video-review__type-tag {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #4F46E5;
+  background-color: #EEF2FF;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+/* --- Responsive (Ekran o'lchamlariga moslashish) --- */
+@media (max-width: 1200px) {
+  .testimonials__grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 tadan joylashadi */
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .testimonials__grid {
+    grid-template-columns: 1fr; /* Mobil qurilmalarda 1 tadan */
+    max-width: 340px;
+  }
+}
