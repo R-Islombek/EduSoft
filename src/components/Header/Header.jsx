@@ -61,13 +61,11 @@ const Header = () => {
           </div>
         </a>
 
-        {/* Mobil overlay */}
         <div 
           className={`site-header__overlay ${open ? "is-open" : ""}`} 
           onClick={() => setOpen(false)} 
         />
 
-        {/* Navigatsiya */}
         <nav className={`site-header__nav ${open ? "is-open" : ""}`}>
           <div className="site-header__nav-inner">
             {LINKS.map((link, index) => (
@@ -84,7 +82,6 @@ const Header = () => {
           </div>
         </nav>
 
-        {/* Harakatlar va Burger */}
         <div className="site-header__actions">
           <button className="btn-consult" onClick={() => handleNav("contact")}>
             Бепул маслаҳат

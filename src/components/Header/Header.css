@@ -200,6 +200,11 @@
 
 /* --- Responsive --- */
 @media (max-width: 968px) {
+
+  .btn-consult {
+    display: none;
+  }
+
   .site-header__burger {
     display: flex;
   }
