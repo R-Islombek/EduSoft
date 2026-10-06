@@ -1,60 +1,514 @@
-.mentors { padding: 40px 0 96px; }
+/* ============ Mentors ============ */
+.mentors {
+  --m-brand: #4f46e5;
+  --m-brand-2: #8b5cf6;
+  --m-ink: #0f172a;
+  --m-muted: #475569;
+  --m-line: #e2e8f0;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
-.mentors__row { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 40px; align-items: start; }
-
-.mentors__intro { position: sticky; top: 110px; }
-
-.mentor-card {
-  background: var(--ink);
-  border-radius: var(--radius-lg);
-  padding: 40px;
-  display: flex;
-  gap: 28px;
-  color: #fff;
-  box-shadow: var(--shadow-card);
+  position: relative;
+  padding: 72px 0 104px;
+  background: #f8fafc;
+  color: var(--m-ink);
+  font-family: var(--header-font, "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  scroll-margin-top: 96px;
 }
 
-.mentor-card__avatar {
-  flex-shrink: 0;
-  width: 84px;
-  height: 84px;
+.mentors__container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mentors__row {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* ============ Chap: kirish ============ */
+.mentors__intro {
+  position: sticky;
+  top: 112px;
+}
+
+.mentors__badge {
+  display: inline-block;
+  margin: 0 0 20px;
+  padding: 7px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--m-brand);
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 999px;
+}
+
+.mentors__heading {
+  margin: 0 0 18px;
+  font-size: clamp(30px, 3.4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.mentors__sub {
+  max-width: 460px;
+  margin: 0 0 28px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--m-muted);
+}
+
+.mentors__points {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mentors__points li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--m-muted);
+}
+.mentors__points strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--m-ink);
+}
+.mentors__check {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-top: 1px;
+  color: #fff;
+  background: linear-gradient(135deg, #5b53f0, var(--m-brand));
+  border-radius: 9px;
+  box-shadow: 0 6px 14px -6px rgba(79, 70, 229, 0.7);
+}
+
+/* ============ O'ng ustun ============ */
+.mentors__col {
+  display: grid;
+  gap: 20px;
+}
+
+/* ============ Mentor kartasi ============ */
+.mentor-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 40px;
+  color: #fff;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 30px 60px -28px rgba(15, 23, 42, 0.6);
+}
+
+.mentor-card__glow {
+  position: absolute;
+  z-index: -1;
+  top: -140px;
+  right: -100px;
+  width: 460px;
+  height: 460px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--violet), var(--coral));
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.5), rgba(139, 92, 246, 0.18) 45%, transparent 70%);
+  filter: blur(10px);
+}
+.mentor-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1.2px);
+  background-size: 26px 26px;
+  -webkit-mask-image: linear-gradient(135deg, #000, transparent 65%);
+  mask-image: linear-gradient(135deg, #000, transparent 65%);
+}
+
+.mentor-card__head {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.5rem;
+  gap: 22px;
+  margin-bottom: 24px;
 }
-
-.mentor-card__body h3 { font-size: 1.5rem; color: #fff; }
-.mentor-card__role { margin-top: 6px; color: #C9BFEF; font-weight: 600; font-size: 0.95rem; }
-.mentor-card__bio { margin-top: 16px; color: #D8D1EF; font-size: 0.98rem; line-height: 1.7; max-width: 560px; }
-
-.mentor-card__stack { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
-.mentor-card__stack span {
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 100px;
-  background: rgba(255,255,255,0.1);
+.mentor-card__head h3 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: #fff;
 }
-
-.mentor-invite {
-  grid-column: 2;
-  margin-top: -4px;
-  padding: 22px 26px;
-  border-radius: var(--radius-md);
-  border: 1.5px dashed var(--border);
+.mentor-card__role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #c7d2fe;
 }
-.mentor-invite h4 { font-size: 1rem; }
-.mentor-invite p { margin-top: 6px; color: var(--ink-soft); font-size: 0.92rem; }
+.mentor-card__badge {
+  padding: 4px 11px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #e0e7ff;
+  background: rgba(129, 140, 248, 0.2);
+  border: 1px solid rgba(165, 180, 252, 0.3);
+  border-radius: 999px;
+}
 
-@media (max-width: 900px) {
-  .mentors__row { grid-template-columns: 1fr; }
-  .mentors__intro { position: static; }
-  .mentor-card { flex-direction: column; }
-  .mentor-invite { grid-column: 1; }
+/* Avatar: gradient hoshiya + rasm yoki bosh harflar */
+.avatar {
+  flex: none;
+  width: 96px;
+  height: 96px;
+  padding: 3px;
+  background: conic-gradient(from 200deg, #818cf8, var(--m-brand-2), #38bdf8, #818cf8);
+  border-radius: 50%;
+}
+.avatar__inner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  background: linear-gradient(135deg, #3730a3, #6d28d9);
+  border: 3px solid #0f172a;
+  border-radius: 50%;
+}
+.avatar__inner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+.avatar__inner img.is-loaded {
+  opacity: 1;
+}
+
+.mentor-card__bio {
+  max-width: 600px;
+  margin: 0 0 30px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #cbd5e1;
+}
+
+/* ============ Yo'l (timeline) ============ */
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  margin: 0 0 30px;
+  padding: 0 0 0 4px;
+  list-style: none;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(165, 180, 252, 0.7), rgba(165, 180, 252, 0.08));
+}
+.timeline li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  align-items: start;
+  gap: 14px;
+  padding-left: 26px;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 5px;
+  width: 13px;
+  height: 13px;
+  background: #0f172a;
+  border: 3px solid #818cf8;
+  border-radius: 50%;
+}
+.timeline li:last-child::before {
+  background: #818cf8;
+  box-shadow: 0 0 0 5px rgba(129, 140, 248, 0.25);
+}
+.timeline__when {
+  padding-top: 1px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #a5b4fc;
+}
+.timeline__body strong {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #fff;
+}
+.timeline__body span {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* ============ Texnologiyalar ============ */
+.mentor-card__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.mentor-card__stack span {
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.mentor-card__stack span:hover {
+  color: #fff;
+  background: rgba(129, 140, 248, 0.28);
+  border-color: rgba(165, 180, 252, 0.5);
+}
+
+/* ============ Pastki ikki blok ============ */
+.mentors__duo {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 20px;
+}
+
+/* Kod review namunasi */
+.review {
+  margin: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--m-line);
+  border-radius: 22px;
+  box-shadow: 0 20px 40px -24px rgba(15, 23, 42, 0.25);
+}
+.review__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--m-line);
+}
+.review__file {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--m-muted);
+}
+.review__ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px 4px 9px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #15803d;
+  background: #dcfce7;
+  border-radius: 999px;
+}
+.review__ok svg {
+  width: 13px;
+  height: 13px;
+}
+
+.review__code {
+  margin: 0;
+  padding: 12px 0;
+  overflow-x: auto;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: #334155;
+}
+.review__code code {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+}
+.review__code .ln {
+  display: block;
+  padding: 0 18px 0 0;
+  white-space: pre;
+}
+.review__code .ln i {
+  display: inline-block;
+  width: 44px;
+  padding-right: 14px;
+  text-align: right;
+  font-style: normal;
+  color: #94a3b8;
+  user-select: none;
+}
+.review__code .ln.add {
+  background: rgba(34, 197, 94, 0.12);
+  box-shadow: inset 3px 0 0 #22c55e;
+}
+
+.review__comment {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 4px 14px 16px;
+  padding: 14px;
+  background: rgba(79, 70, 229, 0.06);
+  border: 1px solid rgba(79, 70, 229, 0.16);
+  border-radius: 16px;
+}
+.review__comment p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #334155;
+}
+.review__ava {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--m-brand), var(--m-brand-2));
+  border-radius: 50%;
+}
+
+/* Yangi mentorlar */
+.mentor-invite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px dashed rgba(79, 70, 229, 0.35);
+  border-radius: 22px;
+}
+.mentor-invite__slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 18px;
+  color: var(--m-brand);
+  background: #fff;
+  border: 1.5px dashed rgba(79, 70, 229, 0.5);
+  border-radius: 50%;
+}
+.mentor-invite__slot::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(79, 70, 229, 0.4);
+  animation: invite-ping 2.6s ease-out infinite;
+}
+@keyframes invite-ping {
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.mentor-invite h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.mentor-invite p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--m-muted);
+}
+
+/* ============ Bo'lim ochilishi (bir marta, tartib bilan) ============ */
+@media (prefers-reduced-motion: no-preference) {
+  .mentors:not(.is-in) [data-r] {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  .mentors [data-r] {
+    transition:
+      opacity 0.8s var(--ease-out) calc(var(--d, 0) * 0.12s),
+      transform 0.9s var(--ease-out) calc(var(--d, 0) * 0.12s);
+  }
+}
+
+/* ============ Planshet / mobil ============ */
+@media (max-width: 1040px) {
+  .mentors__row {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .mentors__intro {
+    position: static;
+  }
+  .mentors__sub {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 720px) {
+  .mentors {
+    padding: 56px 0 80px;
+  }
+  .mentors__duo {
+    grid-template-columns: 1fr;
+  }
+  .mentor-card {
+    padding: 28px 22px;
+    border-radius: 24px;
+  }
+  .mentor-card__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .mentor-card__head h3 {
+    font-size: 26px;
+  }
+  .timeline li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mentor-invite__slot::after {
+    animation: none;
+  }
 }

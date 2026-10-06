@@ -1,219 +1,347 @@
-/* Asosiy bo'lim */
-.success-stories {
-  padding: 70px 0;
-  background-color: #f8fafc;
-  color: #1e293b;
+/* ============ Success Stories ============ */
+.stories {
+  --s-brand: #4f46e5;
+  --s-brand-2: #8b5cf6;
+  --s-ink: #0f172a;
+  --s-muted: #475569;
+  --s-line: #e2e8f0;
+  --s-tg: #229ed9;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  padding: 88px 0 104px;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(79, 70, 229, 0.07), transparent 70%),
+    #ffffff;
+  color: var(--s-ink);
+  font-family: var(--header-font, "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  scroll-margin-top: 96px;
 }
 
-.success-stories__top {
-  max-width: 600px;
-  margin: 0 auto 40px auto;
+.stories__container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============ Sarlavha ============ */
+.stories__top {
+  max-width: 720px;
+  margin: 0 auto 44px;
   text-align: center;
 }
 
-.success-stories__eyebrow-badge {
+.stories__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 7px 16px 7px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--s-brand);
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 999px;
+}
+.stories__dot {
+  width: 8px;
+  height: 8px;
+  background: var(--s-brand);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+}
+
+.stories__heading {
+  margin: 0 0 16px;
+  font-size: clamp(30px, 3.6vw, 46px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.stories__sub {
+  max-width: 560px;
+  margin: 0 auto 30px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--s-muted);
+}
+
+/* ============ Filtr ============ */
+.stories__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.chip {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 12px;
-  background: #f1f5f9;
-  color: #475569;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 12px;
-  border: 1px solid #e2e8f0;
-}
-
-.badge-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #64748b;
-  border-radius: 50%;
-}
-
-.section-heading {
-  font-size: 28px;
+  padding: 9px 12px 9px 18px;
+  font: inherit;
+  font-size: 14.5px;
   font-weight: 700;
-  margin-bottom: 10px;
-  color: #0f172a;
-  letter-spacing: -0.3px;
+  color: #334155;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
-
-.section-sub {
-  color: #64748b;
-  font-size: 15px;
-  line-height: 1.5;
+.chip:hover {
+  color: var(--s-brand);
+  border-color: rgba(79, 70, 229, 0.5);
 }
-
-/* Kartochkalar grid tizimi */
-.success-stories__grid {
+.chip__count {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #64748b;
+  background: #f1f5f9;
+  border-radius: 999px;
+  transition: inherit;
+}
+.chip.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, #5b53f0, var(--s-brand));
+  border-color: transparent;
+  box-shadow: 0 10px 22px -8px rgba(79, 70, 229, 0.6);
+}
+.chip.is-active .chip__count {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+}
+.chip:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.45);
+  outline-offset: 2px;
 }
 
-/* Minimalist va o'qishga qulay Card Dizayni */
-.success-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 20px;
+/* ============ Grid ============ */
+.stories__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ============ Karta ============ */
+.story {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-}
-
-.success-card:hover {
-  transform: translateY(-3px);
-  border-color: #cbd5e1;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
-}
-
-/* Karta boshi (Avatar + Ism + Sana) */
-.success-card__header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-}
-
-/* Rasmni aniq 250px ga 250px (proporsional doira yoki kvadrat shaklda) qilish */
-.success-card__avatar-wrap {
-  width: 250px;
-  height: 250px;
-  min-width: 250px;
-  border-radius: 12px; /* Agar dumaloq qilishni xohlasangiz 50% qilasiz, kartochka uchun 12px chiroyli chiqadi */
   overflow: hidden;
-  flex-shrink: 0;
-  border: 1px solid #e2e8f0;
-  margin: 0 auto 15px auto; /* Markazga qo'yish uchun */
+  background: #fff;
+  border: 1px solid var(--s-line);
+  border-radius: 26px;
+  box-shadow: 0 18px 40px -26px rgba(15, 23, 42, 0.3);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.3s ease;
+}
+.story:hover {
+  transform: translateY(-6px);
+  border-color: rgba(79, 70, 229, 0.3);
+  box-shadow: 0 30px 56px -26px rgba(79, 70, 229, 0.4);
 }
 
-.success-card__img {
+/* Rasm */
+.story__media {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+.story__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 22%;
+  transition: transform 0.8s var(--ease-out);
+}
+.story:hover .story__media img {
+  transform: scale(1.05);
+}
+.story__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 42%, rgba(15, 23, 42, 0.82) 100%);
+  pointer-events: none;
 }
 
-.success-card__avatar-fallback {
+.story__fallback {
+  display: grid;
+  place-items: center;
   width: 100%;
   height: 100%;
-  background: #e2e8f0;
-  color: #475569;
-  font-weight: 600;
-  font-size: 24px;
-  display: flex;
+  font-size: 72px;
+  font-weight: 800;
+  color: hsl(var(--hue) 60% 35%);
+  background: linear-gradient(135deg, hsl(var(--hue) 90% 94%), hsl(var(--hue) 80% 86%));
+}
+
+.story__company {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  padding: 7px 13px 7px 11px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--s-ink);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px -6px rgba(15, 23, 42, 0.35);
+}
+.story__company i {
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--hue) 75% 50%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px hsl(var(--hue) 75% 50% / 0.22);
 }
 
-/* Agar kartaning yuqori qismida ism va rasm yonma-yon emas, 
-   ustma-ust tushishini xohlasangiz quyidagi blokni ishlating: */
-.success-card__header {
-  display: flex;
-  flex-direction: column; /* Rasmni tepaga, matnni pastga qo'yish uchun */
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 14px;
+.story__who {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  right: 20px;
+  bottom: 16px;
+  color: #fff;
 }
-
-.success-card__user-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.success-card__info {
-  flex-grow: 1;
-}
-
-.success-card__name {
-  font-size: 16px;
-  font-weight: 600;
-  color: #0f172a;
-  margin-bottom: 2px;
-}
-
-.success-card__role {
-  font-size: 13px;
-  color: #64748b;
-}
-
-.company-tag {
-  color: #2563eb;
-  font-weight: 500;
-}
-
-.success-card__date {
-  font-size: 12px;
-  color: #94a3b8;
-  background: #f8fafc;
-  padding: 3px 8px;
-  border-radius: 6px;
-  border: 1px solid #f1f5f9;
-}
-
-/* Xabar qismi (Chat Bubble) */
-.success-card__body {
-  margin-bottom: 16px;
-}
-
-.chat-bubble {
-  background: #f8fafc;
-  border: 1px solid #f1f5f9;
-  padding: 14px;
-  border-radius: 10px;
-}
-
-.chat-bubble p {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #334155;
+.story__who h3 {
   margin: 0;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.story__who p {
+  margin: 3px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
 }
 
-/* Karta pastki qismi */
-.success-card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid #f1f5f9;
+/* Telegram uslubidagi xabar */
+.story__body {
+  flex: 1;
+  padding: 18px 18px 6px;
 }
 
-.verified-badge {
+.bubble {
+  position: relative;
+  height: 100%;
+  padding: 15px 16px 10px;
+  background: #eef2ff;
+  border: 1px solid rgba(79, 70, 229, 0.14);
+  border-radius: 20px 20px 20px 6px;
+}
+.bubble p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #1e293b;
+}
+.bubble__meta {
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 8px;
   font-size: 12px;
-  font-weight: 500;
-  color: #0284c7;
+  font-weight: 700;
+  color: #6366f1;
 }
 
-.verified-badge svg {
-  color: #0284c7;
+.story__footer {
+  padding: 12px 18px 18px;
 }
-
-.chat-icon-indicator {
-  color: #94a3b8;
-  display: flex;
+.verified {
+  display: inline-flex;
   align-items: center;
+  gap: 7px;
+  padding: 6px 12px 6px 10px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0b7bb5;
+  background: rgba(34, 158, 217, 0.1);
+  border-radius: 999px;
 }
 
-/* Mobil moslashuvchanlik */
-@media (max-width: 768px) {
-  .success-stories__grid {
+/* ============ Kirish animatsiyasi ============ */
+@media (prefers-reduced-motion: no-preference) {
+  .stories:not(.is-in) .stories__top > *,
+  .stories:not(.is-in) .story {
+    opacity: 0;
+  }
+  .stories.is-in .stories__top > * {
+    animation: s-rise 0.9s var(--ease-out) both;
+  }
+  .stories.is-in .stories__top > :nth-child(2) { animation-delay: 0.08s; }
+  .stories.is-in .stories__top > :nth-child(3) { animation-delay: 0.16s; }
+  .stories.is-in .stories__top > :nth-child(4) { animation-delay: 0.24s; }
+
+  .stories.is-in .story {
+    animation: s-rise 0.8s var(--ease-out) both;
+    animation-delay: calc(0.25s + var(--d, 0) * 0.09s);
+  }
+}
+@keyframes s-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+
+/* ============ Planshet / mobil ============ */
+@media (max-width: 1100px) {
+  .stories__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .stories {
+    padding: 64px 0 80px;
+  }
+  .stories__top {
+    margin-bottom: 32px;
+  }
+  .stories__grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .success-card__avatar-wrap {
-    width: 100%; /* Mobilda ekran kengligiga moslashadi */
-    height: 220px;
+  /* Filtr: bir qatorda yonga siljiydi */
+  .stories__filters {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 0 -24px;
+    padding: 4px 24px 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
-  .section-heading {
-    font-size: 24px;
+  .stories__filters::-webkit-scrollbar {
+    display: none;
+  }
+  .chip {
+    flex: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story,
+  .story__media img {
+    transition: none;
   }
 }

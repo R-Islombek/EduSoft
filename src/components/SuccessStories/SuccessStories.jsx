@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./SuccessStories.css";
 
 // Rasmlarni import qilish
@@ -65,84 +66,142 @@ const SUCCESS_STORIES = [
   },
 ];
 
+const ALL = "Barchasi";
+
+/* Kompaniya nomidan barqaror rang (hue) hosil qiladi */
+const hueOf = (text) => [...text].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
+
+const DoubleCheck = () => (
+  <svg width="18" height="12" viewBox="0 0 28 18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M2 9.5l5 5L17 3.5" />
+    <path d="M12 12.5l2.5 2.5L25 3.5" />
+  </svg>
+);
+
+const TelegramIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M21.9 3.3a1 1 0 0 0-1-.2L2.7 10.2a1 1 0 0 0 .1 1.9l4.6 1.5 1.8 5.6a1 1 0 0 0 1.7.4l2.5-2.6 4.6 3.4a1 1 0 0 0 1.6-.6l3.3-15.6a1 1 0 0 0-.7-1Z" />
+  </svg>
+);
+
+const StoryPhoto = ({ src, name, hue }) => {
+  const [failed, setFailed] = useState(false);
+  if (!src || failed) {
+    return (
+      <div className="story__fallback" style={{ "--hue": hue }} aria-hidden="true">
+        {name.charAt(0)}
+      </div>
+    );
+  }
+  return <img src={src} alt={name} loading="lazy" onError={() => setFailed(true)} />;
+};
+
 const SuccessStories = () => {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  const [active, setActive] = useState(ALL);
+
+  /* Bo'lim ko'ringanda animatsiya boshlanadi */
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !("IntersectionObserver" in window)) {
+      setInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const filters = useMemo(() => {
+    const counts = SUCCESS_STORIES.reduce((acc, s) => {
+      acc[s.company] = (acc[s.company] || 0) + 1;
+      return acc;
+    }, {});
+    return [
+      { label: ALL, count: SUCCESS_STORIES.length },
+      ...Object.entries(counts).map(([label, count]) => ({ label, count })),
+    ];
+  }, []);
+
+  const visible = active === ALL ? SUCCESS_STORIES : SUCCESS_STORIES.filter((s) => s.company === active);
+
   return (
-    <section id="success-stories" className="success-stories">
-      <div className="container">
-        
-        {/* Sarlavha qismi */}
-        <div className="success-stories__top text-center" data-aos="fade-up">
-          <div className="success-stories__eyebrow-badge">
-            <span className="badge-dot" /> Bitiruvchilar Natijasi
+    <section id="success-stories" ref={ref} className={`stories ${inView ? "is-in" : ""}`}>
+      <div className="stories__container">
+        {/* Sarlavha */}
+        <div className="stories__top">
+          <div className="stories__badge">
+            <span className="stories__dot" />
+            Bitiruvchilar natijasi
           </div>
-          <h2 className="section-heading">Ishga kirgan o'quvchilarimizdan samimiy e'tiroflar</h2>
-          <p className="section-sub">
+          <h2 className="stories__heading">Ishga kirgan o'quvchilarimizdan samimiy e'tiroflar</h2>
+          <p className="stories__sub">
             EduSoft'da olgan bilimlarini amalda qo'llab, ilk ish joyiga ega bo'lgan o'quvchilarimizning xabarlari.
           </p>
+
+          <div className="stories__filters" role="group" aria-label="Kompaniya bo'yicha saralash">
+            {filters.map((f) => (
+              <button
+                key={f.label}
+                type="button"
+                className={`chip ${active === f.label ? "is-active" : ""}`}
+                aria-pressed={active === f.label}
+                onClick={() => setActive(f.label)}
+              >
+                {f.label}
+                <span className="chip__count">{f.count}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Kartochkalar gridi */}
-        <div className="success-stories__grid">
-          {SUCCESS_STORIES.map((item, index) => (
-            <div 
-              className="success-card" 
-              key={item.id}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              {/* Kartochka yuqori qismi: Avatar va Ma'lumot */}
-              <div className="success-card__header">
-                <div className="success-card__avatar-wrap">
-                  <img 
-                    src={item.image} 
-                    alt={item.name} 
-                    className="success-card__img"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                  <div className="success-card__avatar-fallback" style={{ display: 'none' }}>
-                    {item.name.charAt(0)}
+        {/* Kartochkalar */}
+        <div className="stories__grid" key={active}>
+          {visible.map((item, i) => {
+            const hue = hueOf(item.company);
+            return (
+              <article className="story" key={item.id} style={{ "--d": i, "--hue": hue }}>
+                <div className="story__media">
+                  <StoryPhoto src={item.image} name={item.name} hue={hue} />
+                  <span className="story__company">
+                    <i aria-hidden="true" />
+                    {item.company}
+                  </span>
+                  <div className="story__who">
+                    <h3>{item.name}</h3>
+                    <p>{item.role}</p>
                   </div>
                 </div>
 
-                <div className="success-card__info">
-                  <h3 className="success-card__name">{item.name}</h3>
-                  <p className="success-card__role">
-                    {item.role} 
-                    {item.company && <span className="company-tag"> · {item.company}</span>}
-                  </p>
+                <div className="story__body">
+                  <div className="bubble">
+                    <p>{item.quote}</p>
+                    <span className="bubble__meta">
+                      {item.date}
+                      <DoubleCheck />
+                    </span>
+                  </div>
                 </div>
 
-                <span className="success-card__date">{item.date}</span>
-              </div>
-
-              {/* Xabar matni (Chat bubble ko'rinishida) */}
-              <div className="success-card__body">
-                <div className="chat-bubble">
-                  <p>"{item.quote}"</p>
-                </div>
-              </div>
-
-              {/* Pastki Status qismi */}
-              <div className="success-card__footer">
-                <span className="verified-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  Real Telegram xabar
-                </span>
-                <span className="chat-icon-indicator">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                  </svg>
-                </span>
-              </div>
-            </div>
-          ))}
+                <footer className="story__footer">
+                  <span className="verified">
+                    <TelegramIcon />
+                    Real Telegram xabar
+                  </span>
+                </footer>
+              </article>
+            );
+          })}
         </div>
-
       </div>
     </section>
   );

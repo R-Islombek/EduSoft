@@ -3,7 +3,7 @@ import "./Pricing.css";
 const PLANS = [
   {
     name: "Guruh",
-    price: "790 000",
+    price: "800 000",
     period: "/oy",
     desc: "Guruh darslari, uy vazifalari va haftalik kod review bilan izchil o'rganish.",
     features: [
@@ -17,7 +17,7 @@ const PLANS = [
   },
   {
     name: "Mentorlik",
-    price: "1 290 000",
+    price: "1 000 000",
     period: "/oy",
     desc: "Guruh darsi + shaxsiy mentor: kodingiz haftada bir marta birma-bir ko'rib chiqiladi.",
     features: [

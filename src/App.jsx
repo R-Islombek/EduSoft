@@ -4,7 +4,7 @@ import Courses from "./components/Courses/Courses";
 import Mentors from "./components/Mentors/Mentors";
 import Pricing from "./components/Pricing/Pricing";
 import Testimonials from "./components/Testimonials/Testimonials";
-import Contact from "./components/Contact/Contact";
+import Register from "./components/Contact/Register";
 import SuccessStories from "./components/SuccessStories/SuccessStories"
 import Footer from "./components/Footer/Footer";
 
@@ -18,7 +18,7 @@ function App() {
       <Pricing />
       <Testimonials />
       <SuccessStories/>
-      <Contact />
+      <Register />
       <Footer />
     </>
   );

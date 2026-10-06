@@ -1,0 +1,400 @@
+/* ============ Register (to'liq mustaqil: boshqa CSS kerak emas) ============ */
+.reg {
+  --r-brand: #4f46e5;
+  --r-ink: #0f172a;
+  --r-danger: #dc2626;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 104px 16px 56px;
+  overflow: hidden;
+  font-family: var(--header-font, "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  color: var(--r-ink);
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(139, 92, 246, 0.45), transparent 70%),
+    linear-gradient(180deg, #3730a3 0%, #2e1f9e 100%);
+}
+
+/* Yuqori yarim: och fon + geometrik shakllar */
+.reg__art {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: -1;
+  height: 46%;
+  min-height: 300px;
+  background: #e8ecf8;
+}
+.reg__art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.reg__back {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px 9px 12px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--r-ink);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  box-shadow: 0 8px 20px -10px rgba(15, 23, 42, 0.4);
+  transition: transform 0.25s var(--ease-out);
+}
+.reg__back:hover {
+  transform: translateX(-3px);
+}
+
+/* ============ Karta ============ */
+.reg__card {
+  position: relative;
+  width: min(440px, 100%);
+  padding: 62px 40px 30px;
+  background: #fff;
+  border-radius: 34px;
+  box-shadow: 0 40px 80px -30px rgba(30, 27, 75, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.reg__badge {
+  position: absolute;
+  top: -46px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  background: linear-gradient(135deg, #4f46e5 0%, #8b5cf6 55%, #ec4899 100%);
+  border: 5px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 16px 30px -10px rgba(79, 70, 229, 0.7);
+  transform: translateX(-50%);
+}
+
+.reg__card h1 {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--r-brand);
+}
+
+.reg__lead {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+/* ============ Forma ============ */
+.reg__form {
+  display: grid;
+  gap: 16px;
+}
+
+.rf {
+  display: grid;
+  gap: 7px;
+}
+.rf label {
+  padding-left: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #64748b;
+}
+.rf input,
+.rf select {
+  width: 100%;
+  height: 52px;
+  padding: 0 22px;
+  font: inherit;
+  font-size: 16px;
+  color: var(--r-ink);
+  background: #eceff6;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.rf input::placeholder {
+  color: #94a3b8;
+}
+.rf input:hover,
+.rf select:hover {
+  background: #e4e9f3;
+}
+.rf input:focus,
+.rf select:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--r-brand);
+  box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.14);
+}
+.rf input[aria-invalid="true"],
+.rf select[aria-invalid="true"] {
+  background: #fef2f2;
+  border-color: var(--r-danger);
+}
+
+/* Kurs tanlash (select) */
+.rf__select {
+  position: relative;
+}
+.rf select {
+  padding-right: 52px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  text-overflow: ellipsis;
+}
+.rf select.is-empty {
+  color: #94a3b8;
+}
+.rf select option {
+  color: var(--r-ink);
+}
+.rf__chevron {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  color: #64748b;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: color 0.25s ease;
+}
+.rf select:focus + .rf__chevron {
+  color: var(--r-brand);
+}
+
+.rf__error {
+  margin: 0;
+  padding-left: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--r-danger);
+}
+
+.reg__alert {
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--r-danger);
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 16px;
+}
+
+/* Bot tuzog'i */
+.reg__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* ============ Tugma ============ */
+.reg__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 56px;
+  margin-top: 4px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #5b53f0 0%, var(--r-brand) 55%, #4338ca 100%);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 14px 28px -10px rgba(79, 70, 229, 0.75);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+.reg__submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 20px 34px -10px rgba(79, 70, 229, 0.85);
+}
+.reg__submit:disabled {
+  opacity: 0.8;
+  cursor: progress;
+}
+
+.reg__spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: r-spin 0.7s linear infinite;
+}
+@keyframes r-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============ Pastki havola ============ */
+.reg__foot {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #64748b;
+}
+.reg__foot a {
+  font-weight: 800;
+  color: var(--r-brand);
+  text-decoration: none;
+}
+.reg__foot a:hover {
+  color: #4338ca;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ============ Fokus ============ */
+.reg a:focus-visible,
+.reg button:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.5);
+  outline-offset: 3px;
+}
+
+/* ============ Muvaffaqiyat ============ */
+.reg-done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.reg-done__check {
+  margin-bottom: 14px;
+  color: var(--r-brand);
+}
+.reg-done__ring {
+  fill: rgba(79, 70, 229, 0.08);
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: r-draw 0.7s var(--ease-out) forwards;
+}
+.reg-done__tick {
+  stroke: currentColor;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: r-draw 0.5s var(--ease-out) 0.45s forwards;
+}
+@keyframes r-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.reg-done h1 {
+  outline: none;
+}
+.reg-done p {
+  max-width: 330px;
+  margin: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #64748b;
+}
+.reg-done p b {
+  color: var(--r-ink);
+}
+.reg-done__actions {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+.reg-done__again {
+  height: 50px;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--r-brand);
+  background: transparent;
+  border: 2px solid rgba(79, 70, 229, 0.3);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.reg-done__again:hover {
+  background: rgba(79, 70, 229, 0.06);
+  border-color: var(--r-brand);
+}
+
+/* ============ Kirish animatsiyasi ============ */
+@media (prefers-reduced-motion: no-preference) {
+  .reg__card {
+    animation: r-rise 0.9s var(--ease-out) both;
+  }
+  .reg__badge {
+    animation: r-pop 0.8s var(--ease-out) 0.25s both;
+  }
+}
+@keyframes r-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+@keyframes r-pop {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.6);
+  }
+}
+
+/* ============ Mobil ============ */
+@media (max-width: 480px) {
+  .reg {
+    padding-top: 96px;
+  }
+  .reg__card {
+    padding: 58px 22px 26px;
+    border-radius: 28px;
+  }
+  .reg__card h1 {
+    font-size: 26px;
+  }
+  .reg__back {
+    top: 16px;
+    left: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reg__spinner {
+    animation-duration: 2s;
+  }
+  .reg-done__ring,
+  .reg-done__tick {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
